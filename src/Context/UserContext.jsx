@@ -8,9 +8,10 @@ export let UserContext=  createContext()
 
 export default function UserContextProvider(props) {
 
+     const Base_URL = 'https://host-api-1.vercel.app/db.json';
     function getAllUsers(){
       
-        return axios.get('http://localhost:5000/customers')
+        return axios.get(`${Base_URL}/customers`)
         .then((data)=>{
             // console.log(data);
             return data
@@ -23,7 +24,7 @@ export default function UserContextProvider(props) {
     
     function getCustomerById(id){
      
-        return axios.get(`http://localhost:5000/customers/${id}`)
+        return axios.get(`${Base_URL}/customers/${id}`)
         .then((data)=>{
             // console.log(data);
             return data
@@ -36,7 +37,7 @@ export default function UserContextProvider(props) {
     
     function addCustomer(cstdata){
 
-      return axios.post(`http://localhost:5000/customers`,cstdata)
+      return axios.post(`${Base_URL}/customers`,cstdata)
       .then((trans)=>{
           console.log('cst added successfully ',trans.data);
         
@@ -51,7 +52,7 @@ export default function UserContextProvider(props) {
 
     function getTransForSpecifcUser(customerId){
 
-      return axios.get(`http://localhost:5000/transactions?customer_id=${customerId}`)
+      return axios.get(`${Base_URL}/transactions?customer_id=${customerId}`)
       .then((data)=>{
           // console.log(data.data);
           
