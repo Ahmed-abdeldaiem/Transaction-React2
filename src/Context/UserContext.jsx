@@ -11,10 +11,10 @@ export default function UserContextProvider(props) {
      const Base_URL = 'https://host-api-1.vercel.app/db.json';
     function getAllUsers(){
       
-        return axios.get(`${Base_URL}/customers`)
+        return axios.get(`${Base_URL}`)
         .then((data)=>{
-            // console.log(data);
-            return data
+            // console.log(data.customers);
+            return data.customers
         })
         .catch((error)=>{
             console.log(error);
